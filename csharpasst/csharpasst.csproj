@@ -94,7 +94,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -124,6 +126,8 @@
     </Compile>
     <Compile Include="Helpers\GlobalVariables.cs" />
     <Compile Include="Helpers\Database.cs" />
+    <Compile Include="Models\Perm.cs" />
+    <Compile Include="Models\File.cs" />
     <Compile Include="Models\Owner.cs" />
     <Compile Include="Views\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>

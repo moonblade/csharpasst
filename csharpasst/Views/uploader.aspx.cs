@@ -4,17 +4,28 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using csharpasst.Helpers;
+using csharpasst.Models;
+using System.Net;
 
-namespace csharpasst.Models
+namespace csharpasst.Views
 {
     public partial class uploader : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (GlobalVariables.loggedInUser == null)
+            {
+                Response.Redirect("login.aspx");
+            }
             if ((File1.PostedFile != null) && (File1.PostedFile.ContentLength > 0))
             {
                 string fn = System.IO.Path.GetFileName(File1.PostedFile.FileName);
                 string SaveLocation = Server.MapPath("..\\files") + "\\" + fn;
+                File f = new File(fn, GlobalVariables.loggedInUser.id);
+                f.id = Database.Instance.insert(f);
+                Perm p = new Perm(f.id, GlobalVariables.loggedInUser.id);
+                Database.Instance.insert(p);
                 try
                 {
                     File1.PostedFile.SaveAs(SaveLocation);
@@ -32,6 +43,30 @@ namespace csharpasst.Models
             {
                 Response.Write("Please select a file to upload.");
             }
+
+            List<File> lf = Database.Instance.getFiles(GlobalVariables.loggedInUser);
+            List<string> ls = new List<string>();
+            foreach (File f in lf)
+            {
+                ls.Add(f.filename);
+            }
+            DataGrid.DataSource = ls;
+            DataGrid.DataBind();
+        }
+
+        public void Repeater_btn(Object Sender, RepeaterCommandEventArgs e)
+        {
+            string strURL = "/files/" + e.CommandName;
+            WebClient req = new WebClient();
+            HttpResponse response = HttpContext.Current.Response;
+            response.Clear();
+            response.ClearContent();
+            response.ClearHeaders();
+            response.Buffer = true;
+            response.AddHeader("Content-Disposition", "attachment;filename=" + e.CommandName);
+            byte[] data = req.DownloadData(Server.MapPath(strURL));
+            response.BinaryWrite(data);
+            response.End();
         }
     }
 }

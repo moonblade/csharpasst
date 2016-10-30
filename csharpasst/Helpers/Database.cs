@@ -26,7 +26,7 @@ namespace csharpasst.Helpers
 
         public bool register(Owner user)
         {
-            SqlCommand cmd = new SqlCommand("insert into owner(name,email,password) values(@name,@email,@password)", con);
+            SqlCommand cmd = new SqlCommand("insert into owner(name,email,password) output inserted.id values(@name,@email,@password)", con);
             cmd.Parameters.AddWithValue("@email", user.email);
             cmd.Parameters.AddWithValue("@password", user.password);
             cmd.Parameters.AddWithValue("@name", user.name);

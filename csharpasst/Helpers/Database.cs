@@ -23,12 +23,97 @@ namespace csharpasst.Helpers
             con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbconnection"].ConnectionString);
             con.Open();
         }
+        public void denyUser(string email, string filename)
+        {
+            SqlCommand cmd = new SqlCommand("delete from perm where ownerid=(select id from owner where email=@email) and fileid=(select id from files where filename=@filename)",con);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@filename", filename);
+            cmd.ExecuteNonQuery();
+        }
+        public bool isAllowed(int id, string filename)
+        {
+            SqlCommand cmd = new SqlCommand("select count(*) from perm,files where files.id = perm.fileid and filename=@filename and perm.ownerid=@ownerid",con);
+            cmd.Parameters.AddWithValue("@filename", filename);
+            cmd.Parameters.AddWithValue("@ownerid", id);
+            int k=(int)cmd.ExecuteScalar();
+            System.Diagnostics.Debug.WriteLine(k + " ");
+            return k > 0;
+        }
+        public void allowUser(string email, string filename)
+        {
+            SqlCommand cmd = new SqlCommand("insert into perm select distinct files.id,owner.id from owner,files where email=@email and filename=@filename", con);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@filename", filename);
+            cmd.ExecuteNonQuery();
+        }
         public void insert(Perm perm)
         {
             SqlCommand cmd = new SqlCommand("insert into perm(fileid,ownerid) values(@fileid,@ownerid)", con);
             cmd.Parameters.AddWithValue("@fileid", perm.fileid);
             cmd.Parameters.AddWithValue("@ownerid", perm.ownerid);
             cmd.ExecuteNonQuery();
+        }
+        public List<string> getDeniedUsers(string filename)
+        {
+            SqlCommand cmd = new SqlCommand("select email from owner where id not in (select owner.id from owner,files,perm where owner.id=perm.ownerid and files.id = perm.fileid and filename=@filename)", con);
+            cmd.Parameters.AddWithValue("@filename", filename);
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            List<string> lf = new List<string>();
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    lf.Add(row["email"].ToString());
+                }
+            }
+            return lf;
+        }
+        public List<string> getAllowedUsers(string filename)
+        {
+            SqlCommand cmd = new SqlCommand("select email from owner,files,perm where owner.id=perm.ownerid and files.id = perm.fileid and filename=@filename and perm.ownerid!=files.ownerid",con);
+            cmd.Parameters.AddWithValue("@filename", filename);
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            List<string> lf = new List<string>();
+            if(dt.Rows.Count>0)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    lf.Add(row["email"].ToString());
+                }
+            }
+            return lf;
+        }
+        public List<Owner> getUsers()
+        {
+            SqlCommand cmd = new SqlCommand("select * from owner",con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            List<Owner> ol = new List<Owner>();
+            if(dt.Rows.Count>0)
+            {
+                foreach (DataRow row in dt.Rows)
+                    ol.Add(new Owner(row));
+            }
+            return ol;
+        }
+        public void givePermission(File file, Owner owner)
+        {
+            SqlCommand cmd = new SqlCommand("insert into perm values(@fileid,@ownerid)", con);
+            cmd.Parameters.AddWithValue("@fileid", file.id);
+            cmd.Parameters.AddWithValue("@ownerid", owner.id);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.StackTrace);
+            }
         }
         public int insert(File file)
         {

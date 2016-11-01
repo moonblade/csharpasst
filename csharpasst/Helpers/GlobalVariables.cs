@@ -9,5 +9,6 @@ namespace csharpasst.Helpers
     public class GlobalVariables
     {
         public static Owner loggedInUser = null;
+        public static string starting = "login.aspx";
     }
 }

@@ -16,7 +16,7 @@ namespace csharpasst.Views
         {
             if (GlobalVariables.loggedInUser == null)
             {
-                Response.Redirect("login.aspx");
+                Response.Redirect(GlobalVariables.starting);
             }
             if ((File1.PostedFile != null) && (File1.PostedFile.ContentLength > 0))
             {
@@ -32,7 +32,8 @@ namespace csharpasst.Views
                     Response.Write("The file has been uploaded.");
                 }
                 catch (Exception ex)
-                {
+
+                 {
                     Response.Write("Error: " + ex.Message);
                     //Note: Exception.Message returns detailed message that describes the current exception. 
                     //For security reasons, we do not recommend you return Exception.Message to end users in 
@@ -53,20 +54,9 @@ namespace csharpasst.Views
             DataGrid.DataSource = ls;
             DataGrid.DataBind();
         }
-
         public void Repeater_btn(Object Sender, RepeaterCommandEventArgs e)
         {
-            string strURL = "/files/" + e.CommandName;
-            WebClient req = new WebClient();
-            HttpResponse response = HttpContext.Current.Response;
-            response.Clear();
-            response.ClearContent();
-            response.ClearHeaders();
-            response.Buffer = true;
-            response.AddHeader("Content-Disposition", "attachment;filename=" + e.CommandName);
-            byte[] data = req.DownloadData(Server.MapPath(strURL));
-            response.BinaryWrite(data);
-            response.End();
+            Response.Redirect("userlist.aspx?filename=" + e.CommandName);
         }
     }
 }

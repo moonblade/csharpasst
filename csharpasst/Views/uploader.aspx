@@ -15,13 +15,14 @@
     <div>
     <h1>Downloads</h1>
     <asp:Repeater id="DataGrid" runat="server" OnItemCommand="Repeater_btn" >
-
         <ItemTemplate>
             <table>
-                <tr><td><asp:LinkButton  ID="Filename" Text= '<%# Container.DataItem.ToString() %>' visible="true" runat="server" CommandName='<%# Container.DataItem.ToString() %>'/> </td></tr>
+                <tr>
+                    <td><asp:LinkButton ID="Filename" Text= '<%# Container.DataItem.ToString() %>' visible="true" runat="server" CommandName='<%# Container.DataItem.ToString() %>'/> </td>
+                </tr>
+
             </table>
           </ItemTemplate>
-
     </asp:Repeater>
     </div>
 </form>

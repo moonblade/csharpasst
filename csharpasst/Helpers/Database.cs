@@ -117,9 +117,18 @@ namespace csharpasst.Helpers
         }
         public int insert(File file)
         {
-            SqlCommand cmd = new SqlCommand("insert into files(filename,ownerid) output inserted.id values(@filename,@ownerid)", con);
+            SqlCommand cmd = new SqlCommand("select sum(size) from files, owner where owner.id=files.ownerid and owner.id=@ownerid",con);
+            cmd.Parameters.AddWithValue("@ownerid", file.ownerid);
+            long k = (long)cmd.ExecuteScalar();
+            if (k + file.size>Owner.quota)
+            {
+                System.Diagnostics.Debug.WriteLine("Quota Exceeded");
+                return file.id;
+            }
+            cmd = new SqlCommand("insert into files(filename,ownerid,size) output inserted.id values(@filename,@ownerid,@size)", con);
             cmd.Parameters.AddWithValue("@filename", file.filename);
             cmd.Parameters.AddWithValue("@ownerid", file.ownerid);
+            cmd.Parameters.AddWithValue("@size", file.size);
             try
             {
             file.id = (int)cmd.ExecuteScalar();

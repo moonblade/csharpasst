@@ -7,6 +7,7 @@ namespace csharpasst.Models
 {
     public class Owner
     {
+        public static double quota = 1000*1000; //1mb
         public int id { get; set; }
         public string name { get; set; }
         public string email { get; set; }

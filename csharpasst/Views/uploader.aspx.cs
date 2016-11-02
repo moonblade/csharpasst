@@ -22,8 +22,11 @@ namespace csharpasst.Views
             {
                 string fn = System.IO.Path.GetFileName(File1.PostedFile.FileName);
                 string SaveLocation = Server.MapPath("..\\files") + "\\" + fn;
-                File f = new File(fn, GlobalVariables.loggedInUser.id);
+                File f = new File(fn, GlobalVariables.loggedInUser.id, File1.PostedFile.ContentLength);
                 f.id = Database.Instance.insert(f);
+                if(f.id>0)
+                {
+
                 Perm p = new Perm(f.id, GlobalVariables.loggedInUser.id);
                 Database.Instance.insert(p);
                 try
@@ -38,6 +41,11 @@ namespace csharpasst.Views
                     //Note: Exception.Message returns detailed message that describes the current exception. 
                     //For security reasons, we do not recommend you return Exception.Message to end users in 
                     //production environments. It would be better just to put a generic error message. 
+                }
+                }
+                else
+                {
+                    Response.Write("Exceeds Quota");
                 }
             }
             else

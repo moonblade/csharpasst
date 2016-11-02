@@ -10,16 +10,19 @@ namespace csharpasst.Models
         public int id { get; set; }
         public string filename { get; set; }
         public int ownerid { get; set; }
-        public File(string filename, int ownerid)
+        public long size { get; set; }
+        public File(string filename, int ownerid, long size)
         {
             this.filename = filename;
             this.ownerid = ownerid;
+            this.size = size;
         }
         public File(DataRow row)
         {
             this.id = (int)row["id"];
             this.filename = (string)row["filename"];
             this.ownerid = (int)row["ownerid"];
+//            this.size = (int)row["size"];
         }
     }
 }

@@ -31,3 +31,6 @@ c:\users\moonblade\documents\visual studio 2015\Projects\csharpasst\csharpasst\b
 c:\users\moonblade\documents\visual studio 2015\Projects\csharpasst\csharpasst\obj\Debug\csharpasst.csprojResolveAssemblyReference.cache
 c:\users\moonblade\documents\visual studio 2015\Projects\csharpasst\csharpasst\obj\Debug\csharpasst.dll
 c:\users\moonblade\documents\visual studio 2015\Projects\csharpasst\csharpasst\obj\Debug\csharpasst.pdb
+C:\Users\moonblade\documents\visual studio 2015\Projects\csharpasst\csharpasst\bin\NLog.config
+C:\Users\moonblade\documents\visual studio 2015\Projects\csharpasst\csharpasst\bin\NLog.dll
+C:\Users\moonblade\documents\visual studio 2015\Projects\csharpasst\csharpasst\bin\NLog.xml

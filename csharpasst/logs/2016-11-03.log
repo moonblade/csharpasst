@@ -1,0 +1,33 @@
+2016-11-03 10:34:32.8084 INFO ::1 accessed files of : 5 : chithra : chit :
+2016-11-03 10:34:40.5188 INFO ::1 accessed files of : 5 : chithra : chit :
+2016-11-03 10:35:21.1525 INFO ::1 tried login a
+2016-11-03 10:35:21.8710 INFO ::1 accessed files of : 1 : nisham : a :
+2016-11-03 10:35:24.5399 INFO ::1 accessed files of : 1 : nisham : a :
+2016-11-03 10:35:24.9152 INFO ::1 accessed Allowed user list for dbo.files.sql
+2016-11-03 10:35:24.9692 INFO ::1 Accessed is allowed of  1 for file dbo.files.sql
+2016-11-03 10:35:24.9692 INFO ::1 accessed denied user list for dbo.files.sql
+2016-11-03 10:44:01.6924 INFO Opening Database Connection
+2016-11-03 10:44:06.7009 FATAL Database connection not established
+2016-11-03 10:44:06.7009 FATAL    at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at csharpasst.Helpers.Database..ctor() in C:\Users\moonblade\documents\visual studio 2015\Projects\csharpasst\csharpasst\Helpers\Database.cs:line 29
+2016-11-03 10:46:12.1857 INFO Opening Database Connection
+2016-11-03 10:46:17.5625 INFO ::1 registered : -1 : newUser : n :
+2016-11-03 10:49:18.6142 INFO Opening Database Connection
+2016-11-03 10:49:19.5899 INFO ::1 tried login a
+2016-11-03 10:49:19.6519 INFO ::1 tried failed on a
+2016-11-03 10:49:51.1208 INFO ::1 registered : -1 : newUser : n :
+2016-11-03 10:49:59.0776 INFO ::1 tried login n
+2016-11-03 10:49:59.2297 INFO ::1 accessed files of : 6 : newUser : n :
+2016-11-03 10:50:05.5064 INFO ::1 accessed files of : 6 : newUser : n :

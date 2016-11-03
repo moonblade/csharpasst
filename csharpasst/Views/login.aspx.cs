@@ -25,7 +25,7 @@ namespace csharpasst.Views
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             Database d = Database.Instance;
-            Owner loggedInUser = d.login(txtEmail.Text, txtPWD.Text);
+            Owner loggedInUser = d.login(txtEmail.Text, GlobalVariables.md5(txtPWD.Text));
             if (loggedInUser!=null)
             {
                 GlobalVariables.loggedInUser = loggedInUser;

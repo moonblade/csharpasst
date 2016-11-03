@@ -24,5 +24,9 @@ namespace csharpasst.Models
             this.ownerid = (int)row["ownerid"];
 //            this.size = (int)row["size"];
         }
+        public override string ToString()
+        {
+            return ": " + this.id + " : " + this.filename + " : " + this.ownerid + " : " + this.size + " :";
+        }
     }
 }

@@ -1,0 +1,35 @@
+2016-11-03 10:32:19.4977|INFO|csharpasst.Helpers.Database|::1 accessed files of : 5 : chithra : chit :
+2016-11-03 10:32:37.0161|INFO|csharpasst.Helpers.Database|::1 accessed files of : 5 : chithra : chit :
+2016-11-03 10:32:41.2651|INFO|csharpasst.Helpers.Database|::1 insert file : 0 : dbo.files.sql : 5 : 338 :
+2016-11-03 10:32:41.7034|ERROR|csharpasst.Helpers.Database|System.Data.SqlClient.SqlExceptionException on ::1 insert file : 0 : dbo.files.sql : 5 : 338 :
+2016-11-03 10:32:41.7485|ERROR|csharpasst.Helpers.Database|   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryHasMoreRows(Boolean& moreRows)
+   at System.Data.SqlClient.SqlDataReader.TryReadInternal(Boolean setTimeout, Boolean& more)
+   at System.Data.SqlClient.SqlDataReader.Read()
+   at System.Data.SqlClient.SqlCommand.CompleteExecuteScalar(SqlDataReader ds, Boolean returnSqlValue)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at csharpasst.Helpers.Database.insert(File file) in C:\Users\moonblade\documents\visual studio 2015\Projects\csharpasst\csharpasst\Helpers\Database.cs:line 197
+2016-11-03 10:32:41.7485|INFO|csharpasst.Helpers.Database|::1 accessed files of : 5 : chithra : chit :
+2016-11-03 10:32:52.1749|INFO|csharpasst.Helpers.Database|::1 accessed files of : 5 : chithra : chit :
+2016-11-03 10:32:58.4233|INFO|csharpasst.Helpers.Database|::1 tried login a
+2016-11-03 10:32:59.1298|INFO|csharpasst.Helpers.Database|::1 accessed files of : 1 : nisham : a :
+2016-11-03 10:33:01.7997|INFO|csharpasst.Helpers.Database|::1 accessed files of : 1 : nisham : a :
+2016-11-03 10:33:02.4802|INFO|csharpasst.Helpers.Database|::1 accessed Allowed user list for longest joke in the world
+2016-11-03 10:33:02.5993|INFO|csharpasst.Helpers.Database|::1 Accessed is allowed of  1 for file longest joke in the world
+2016-11-03 10:33:02.5993|INFO|csharpasst.Helpers.Database|::1 accessed denied user list for longest joke in the world
+2016-11-03 10:33:06.7582|INFO|csharpasst.Helpers.Database|::1 accessed Allowed user list for longest joke in the world
+2016-11-03 10:33:06.8543|INFO|csharpasst.Helpers.Database|::1 Accessed is allowed of  1 for file longest joke in the world
+2016-11-03 10:33:06.8543|INFO|csharpasst.Helpers.Database|::1 accessed denied user list for longest joke in the world
+2016-11-03 10:33:06.8743|INFO|csharpasst.Helpers.Database|::1 allowed access to  c for file longest joke in the world
+2016-11-03 10:33:08.1832|INFO|csharpasst.Helpers.Database|::1 accessed Allowed user list for longest joke in the world
+2016-11-03 10:33:08.9348|INFO|csharpasst.Helpers.Database|::1 Accessed is allowed of  1 for file longest joke in the world
+2016-11-03 10:33:08.9568|INFO|csharpasst.Helpers.Database|::1 accessed denied user list for longest joke in the world
+2016-11-03 10:33:13.2839|INFO|csharpasst.Helpers.Database|::1 accessed Allowed user list for longest joke in the world
+2016-11-03 10:33:13.5561|INFO|csharpasst.Helpers.Database|::1 Accessed is allowed of  1 for file longest joke in the world
+2016-11-03 10:33:13.5561|INFO|csharpasst.Helpers.Database|::1 accessed denied user list for longest joke in the world
+2016-11-03 10:33:18.5176|INFO|csharpasst.Helpers.Database|::1 accessed Allowed user list for longest joke in the world
+2016-11-03 10:33:18.7217|INFO|csharpasst.Helpers.Database|::1 Accessed is allowed of  1 for file longest joke in the world
+2016-11-03 10:33:18.7217|INFO|csharpasst.Helpers.Database|::1 accessed denied user list for longest joke in the world

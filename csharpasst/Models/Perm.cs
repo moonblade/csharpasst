@@ -19,5 +19,10 @@ namespace csharpasst.Models
             this.fileid = (int)row["fileid"];
             this.ownerid = (int)row["ownerid"];
         }
+        public override string ToString()
+        {
+            return ": " + this.fileid + " : " + this.ownerid + " :";
+        }
+
     }
 }

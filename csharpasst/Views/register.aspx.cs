@@ -14,7 +14,7 @@ namespace csharpasst.Views
         protected void Register(object sender, EventArgs e)
         {
             Database d = Database.Instance;
-            Owner user = new Owner(txtName.Text,TxtEmail.Text,txtPWD.Text);
+            Owner user = new Owner(txtName.Text,TxtEmail.Text,GlobalVariables.md5(txtPWD.Text));
             bool registered = d.register(user);
             if (registered)
                 Response.Redirect("login.aspx");

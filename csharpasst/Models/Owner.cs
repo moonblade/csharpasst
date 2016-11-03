@@ -38,6 +38,10 @@ namespace csharpasst.Models
             password = (string)row["password"];
             level = (int)row["level"];
         }
+        public override string ToString()
+        {
+            return ": " + this.id + " : " + this.name + " : " + this.email + " :";
+        }
 
     }
 }
